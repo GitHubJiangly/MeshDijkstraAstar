@@ -35,67 +35,6 @@ public:
 	Color():R(255),G(255),B(255){}
 	Color(unsigned char r, unsigned char g, unsigned char b):R(r),G(g),B(b){}
 };
-struct Box3Float
-{
-public:
-	float Min3[3];
-	float Max3[3];
-	Box3Float()
-	{
-		Min3[0]=2147483646;
-		Min3[1]=2147483646;
-		Min3[2]=2147483646;
-		Max3[0]=-99999;
-		Max3[1]=-99999;
-		Max3[2]=-99999;
-	}
-	~Box3Float()
-	{
-
-	}
-	bool IsValid()
-	{
-		return Min3[0]<=Max3[0]&&Min3[1]<=Max3[1]&&Min3[2]<=Max3[2];
-	}
-	Box3Float(float minX, float minY, float minZ, float maxX, float maxY, float maxZ)
-	{
-		Min3[0] = minX;
-		Min3[1] = minY;
-		Min3[2] = minZ;
-		Max3[0] = maxX;
-		Max3[1] = maxY;
-		Max3[2] = maxZ;
-	}
-	void UpdateRange(float x, float y, float z)
-	{
-		if (x < Min3[0])
-			Min3[0] = x;
-		if (y < Min3[1])
-			Min3[1] = y;
-		if (z < Min3[2])
-			Min3[2] = z;
-
-		if (x > Max3[0])
-			Max3[0] = x;
-		if (y > Max3[1])
-			Max3[1] = y;
-		if (z > Max3[2])
-			Max3[2] = z;
-	}
-	float GetXLength()
-	{
-		return Max3[0]-Min3[0];
-	}
-	float GetYLength()
-	{
-		return Max3[1]-Min3[1];
-	}
-	float GetZLength()
-	{
-		return Max3[2]-Min3[2];
-	}
-};
-
 
 class AbstractGraph
 {
